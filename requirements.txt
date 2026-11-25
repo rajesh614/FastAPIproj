@@ -1,0 +1,4 @@
+fastapi==0.x.x
+uvicorn==0.x.x
+SQLAlchemy==2.x.x
+psycopg2-binary==2.x.x
