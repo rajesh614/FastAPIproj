@@ -5,6 +5,7 @@ from sqlalchemy.engine import URL
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text
+from typing import Generator
 
 from core.config import settings
 
@@ -33,3 +34,10 @@ def check_database_connection() -> bool:
 
     logger.info("Database connected successfully")
     return True
+
+def get_db() -> Generator:
+    try:
+        db = SESSIONLOCAL()
+        yield db
+    finally:
+        db.close()
